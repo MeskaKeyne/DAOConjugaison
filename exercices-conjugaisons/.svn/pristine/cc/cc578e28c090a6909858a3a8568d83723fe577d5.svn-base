@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="33cm" height="20cm" viewBox="50 38 645 395" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffffff" x="54" y="40" width="140.9" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="54" y="40" width="140.9" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="124.45" y="59">modes</text>
+    <rect style="fill: #ffffff" x="54" y="68" width="140.9" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="54" y="68" width="140.9" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="57" y="82">+id: INTEGER (PK)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="57" y="98">+nom: VARCHAR(12)</text>
+    <rect style="fill: #ffffff" x="54" y="104" width="140.9" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="54" y="104" width="140.9" height="8"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="560" y="39" width="133.2" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="560" y="39" width="133.2" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="626.6" y="58">temps</text>
+    <rect style="fill: #ffffff" x="560" y="67" width="133.2" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="560" y="67" width="133.2" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="563" y="81">+id: INTEGER(PK)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="563" y="97">+nom: VARCHAR(9)</text>
+    <rect style="fill: #ffffff" x="560" y="103" width="133.2" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="560" y="103" width="133.2" height="8"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="333" y="327" width="187.1" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="333" y="327" width="187.1" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="426.55" y="346">modeles</text>
+    <rect style="fill: #ffffff" x="333" y="355" width="187.1" height="68"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="333" y="355" width="187.1" height="68"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="336" y="369">+id: INTEGER(PK)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="336" y="385">+infinitif: VARCHAR(11)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="336" y="401">+radical: VARCHAR(9)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="336" y="417">+participe: VARCHAR(10)</text>
+    <rect style="fill: #ffffff" x="333" y="423" width="187.1" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="333" y="423" width="187.1" height="8"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="51" y="272" width="187.1" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="51" y="272" width="187.1" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="144.55" y="291">verbes</text>
+    <rect style="fill: #ffffff" x="51" y="300" width="187.1" height="52"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="51" y="300" width="187.1" height="52"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="54" y="314">+id: INTEGER(PK)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="54" y="330">+infinitif: VARCHAR(21)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="54" y="346">+modele: INTEGER(FK)</text>
+    <rect style="fill: #ffffff" x="51" y="352" width="187.1" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="51" y="352" width="187.1" height="8"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="287" y="125" width="202.5" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="287" y="125" width="202.5" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="388.25" y="144">conjugaisons</text>
+    <rect style="fill: #ffffff" x="287" y="153" width="202.5" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="287" y="153" width="202.5" height="100"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="290" y="167">+id: INTEGER(PK)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="290" y="183">+fk_mode: INTEGER(FK)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="290" y="199">+fk_temps: INTEGER(FK)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="290" y="215">+personne: INTEGER</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="290" y="231">+fk_modele: INTEGER(FK)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="290" y="247">+terminaison: VARCHAR(10)</text>
+    <rect style="fill: #ffffff" x="287" y="253" width="202.5" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="287" y="253" width="202.5" height="8"/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="268.764,179 232.95,179 232.95,78 194.9,78 "/>
+    <polygon style="fill: #ffffff" points="268.764,187 284.764,179 268.764,171 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="268.764,187 284.764,179 268.764,171 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="507.736,195 532.75,195 532.75,77 560,77 "/>
+    <polygon style="fill: #ffffff" points="507.736,187 491.736,195 507.736,203 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="507.736,187 491.736,195 507.736,203 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="507.736,227 559,227 559,365 520.1,365 "/>
+    <polygon style="fill: #ffffff" points="507.736,219 491.736,227 507.736,235 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="507.736,219 491.736,227 507.736,235 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="256.336,310 293.55,310 293.55,365 333,365 "/>
+    <polygon style="fill: #ffffff" points="256.336,302 240.336,310 256.336,318 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="256.336,302 240.336,310 256.336,318 "/>
+  </g>
+</svg>

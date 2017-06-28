@@ -8,40 +8,55 @@ public class BeansVerbe implements Verbe {
 	private String _infinitif;
 	private String _radical;
 	private String _participe;
-	private String _auxilaire;
+	private Auxiliaire _auxilaire;
+	private Verbe _modele;
 	
-	public BeansVerbe(String verbe){
-		
+	public BeansVerbe(String infinitf, String radical, String participe, Auxiliaire aux, Verbe modele){
+		this._infinitif = infinitf;
+		this._radical = radical;
+		this._participe = participe;
+		this._auxilaire = aux;
+		this._modele = modele;
 	}
 
 	@Override
 	public Verbe getModele() {
 		// TODO Auto-generated method stub
-		return null;
+		return this._modele;
 	}
 
 	@Override
 	public String getInfinitif() {
 		// TODO Auto-generated method stub
-		return null;
+		return this._infinitif;
 	}
 
 	@Override
 	public String getRadical() {
 		// TODO Auto-generated method stub
-		return null;
+		return this._radical;
 	}
 
 	@Override
 	public Auxiliaire getAuxiliaire() {
 		// TODO Auto-generated method stub
-		return null;
+		return this._auxilaire;
 	}
 
 	@Override
 	public String getParticipe() {
 		// TODO Auto-generated method stub
-		return null;
+		return this._participe;
 	}
+
+	@Override
+	public String toString() {
+		return "BeansVerbe [_infinitif=" + _infinitif + ", _radical=" + _radical + ", _participe=" + _participe
+				+ ", _auxilaire=" + _auxilaire + ", _modele=" + _modele + "]";
+	}
+
+	
+	
+	
 
 }

@@ -5,6 +5,8 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
+import be.steformation.tunsajan.jd.conj.beans.BeansVerbe;
+import be.steformations.java_data.conjugaison_fr.interfaces.Auxiliaire;
 import be.steformations.java_data.conjugaison_fr.interfaces.Verbe;
 
 public class MapperVerbe implements RowMapper<Verbe> {
@@ -20,12 +22,20 @@ public class MapperVerbe implements RowMapper<Verbe> {
 		
 		String term = this.terminaison(modeleInf, radical);
 		String vbRadical = this.radical(term, vi);
+		String vParticipe = this.participe(radical, participe);
+		Auxiliaire auxi = Auxiliaire.AVOIR;
+		
+		
+		Verbe modele =  new BeansVerbe(modeleInf, radical, participe, auxi, null);
+		Verbe bv = new BeansVerbe(vi, vbRadical, vbRadical.concat(vParticipe), auxi, modele);
+		System.out.println(bv);
+		
 		
 		/////////////////////////////////////////////////////
 		
 		
 		
-		return null;
+		return bv ;
 	}
 	public String terminaison(String infinitif, String radical ){
 		return infinitif.substring(radical.length());
@@ -34,7 +44,7 @@ public class MapperVerbe implements RowMapper<Verbe> {
 		return vi.substring(0, vi.length()-term.length());
 	}
 	public String participe(String radical, String participe){
-		return participe.substring(radical.length(), participe.length());	
+		return participe.substring(radical.length());	
 	}
 
 }

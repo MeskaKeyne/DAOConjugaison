@@ -5,18 +5,20 @@ import be.steformations.java_data.conjugaison_fr.interfaces.Verbe;
 
 public class BeansVerbe implements Verbe {
 	
+	private int _id;
 	private String _infinitif;
 	private String _radical;
 	private String _participe;
 	private Auxiliaire _auxilaire;
 	private Verbe _modele;
 	
-	public BeansVerbe(String infinitf, String radical, String participe, Auxiliaire aux, Verbe modele){
+	public BeansVerbe(int id,String infinitf, String radical, String participe, Auxiliaire aux, Verbe modele){
 		this._infinitif = infinitf;
 		this._radical = radical;
 		this._participe = participe;
 		this._auxilaire = aux;
 		this._modele = modele;
+		this._id = id;
 	}
 
 	@Override
@@ -48,12 +50,16 @@ public class BeansVerbe implements Verbe {
 		// TODO Auto-generated method stub
 		return this._participe;
 	}
+	public int gztID(){
+		return this._id;
+	}
 
 	@Override
 	public String toString() {
-		return "BeansVerbe [_infinitif=" + _infinitif + ", _radical=" + _radical + ", _participe=" + _participe
-				+ ", _auxilaire=" + _auxilaire + ", _modele=" + _modele + "]";
+		return "BeansVerbe [_id=" + _id + ", _infinitif=" + _infinitif + ", _radical=" + _radical + ", _participe="
+				+ _participe + ", _auxilaire=" + _auxilaire + ", _modele=" + _modele + "]";
 	}
+
 
 	
 	

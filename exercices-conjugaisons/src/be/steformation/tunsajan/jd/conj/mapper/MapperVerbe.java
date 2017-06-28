@@ -19,6 +19,8 @@ public class MapperVerbe implements RowMapper<Verbe> {
 		String modeleInf = rs.getString("mi"); 
 		String radical = rs.getString("radical");
 		String participe = rs.getString("participe");
+		int idV = rs.getInt("idVerbe");
+		int idM  = rs.getInt("idModele");
 		
 		
 		ConjExtractor extract = new ConjExtractor(); 
@@ -31,8 +33,9 @@ public class MapperVerbe implements RowMapper<Verbe> {
 		else auxi = Auxiliaire.ETRE;
 		
 		
-		Verbe modele =  new BeansVerbe(modeleInf, radical, participe, auxi, null);
-		Verbe bv = new BeansVerbe(vi, vbRadical, vbRadical.concat(vParticipe), auxi, modele);
+		Verbe modele =  new BeansVerbe(idM, modeleInf, radical, participe, auxi, null);
+		Verbe bv = new BeansVerbe(idV, vi, vbRadical, vbRadical.concat(vParticipe), auxi, modele);
+		System.out.println(bv);
 		return bv ;
 	}
 

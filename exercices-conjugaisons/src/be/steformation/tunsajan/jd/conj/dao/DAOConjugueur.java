@@ -29,7 +29,7 @@ public class DAOConjugueur implements Conjugueur {
 		Verbe verbe = null;
 		
 		
-		String sql = "SELECT verbes.infinitif as vi, verbes.auxiliaire as aux, modeles.infinitif as mi, modeles.radical as radical, modeles.participe as participe  "
+		String sql = "SELECT verbes.id AS idVerbe, modeles.id AS idModele, verbes.infinitif as vi, verbes.auxiliaire as aux, modeles.infinitif as mi, modeles.radical as radical, modeles.participe as participe  "
 				+ "FROM Verbes, modeles "
 				+ "where verbes.modele = modeles.id and verbes.infinitif = (?)";
 	
@@ -42,7 +42,13 @@ public class DAOConjugueur implements Conjugueur {
 
 	@Override
 	public Conjugaison conjuguer(Verbe verbe, Mode mode, Temps temps, Personne personne) {
-		// TODO Auto-generated method stub
+		String sql = "SELECT c.fk_mode AS mode, c.fk_temps AS temps, c.personne AS personne, c.terminaison AS term"
+				+ "FROM conjugaisons AS c, temps as t, mode AS m "
+				+ ""
+				+ "WHERE c.fk_temps = t.id "
+				+ "AND c.fk_mode = m.id  "
+				+ "AND t.nom = (?), m.nom =(?), c.personne =(?)";
+				
 		return null;
 	}
 

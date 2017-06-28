@@ -13,6 +13,13 @@ public class BeansConjugaison implements Conjugaison {
 	private Personne _personne;
 	private String _valeur;
 
+	public BeansConjugaison(Mode m, Temps t, Personne p, String val, Verbe v ) {
+		this._mode = m;
+		this._personne = p;
+		this._temps = t;
+		this._valeur = val;
+		this._verbe = v;
+	}
 	@Override
 	public Mode getMode() {
 		// TODO Auto-generated method stub
@@ -41,6 +48,14 @@ public class BeansConjugaison implements Conjugaison {
 	public String getValeur() {
 		// TODO Auto-generated method stub
 		return this._valeur;
+	}
+	public void setVerbe(Verbe v){
+		this._verbe = v;
+	}
+	@Override
+	public String toString() {
+		return "BeansConjugaison [_mode=" + _mode + ", _temps=" + _temps + ", _verbe=" + _verbe + ", _personne="
+				+ _personne + ", _valeur=" + _valeur + "]";
 	}
 
 }

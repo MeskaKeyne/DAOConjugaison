@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+import be.steformation.tunsajan.jd.conj.mapper.MapperConjugaison;
 import be.steformation.tunsajan.jd.conj.mapper.MapperVerbe;
 import be.steformations.java_data.conjugaison_fr.interfaces.Conjugaison;
 import be.steformations.java_data.conjugaison_fr.interfaces.Conjugueur;
@@ -42,14 +43,19 @@ public class DAOConjugueur implements Conjugueur {
 
 	@Override
 	public Conjugaison conjuguer(Verbe verbe, Mode mode, Temps temps, Personne personne) {
-		String sql = "SELECT c.fk_mode AS mode, c.fk_temps AS temps, c.personne AS personne, c.terminaison AS term"
-				+ "FROM conjugaisons AS c, temps as t, mode AS m "
-				+ ""
+		Conjugaison conjugaison = null;
+		String sql = "SELECT m.nom AS mode, t.nom AS temps, c.personne AS personne, c.terminaison AS term "
+				+ "FROM conjugaisons AS c, temps as t, modes AS m "
 				+ "WHERE c.fk_temps = t.id "
 				+ "AND c.fk_mode = m.id  "
-				+ "AND t.nom = (?), m.nom =(?), c.personne =(?)";
-				
-		return null;
+				+ "AND t.nom = (?) AND m.nom = (?) AND c.personne =(?)";
+		
+		try {
+			MapperConjugaison mapper = new MapperConjugaison(verbe);
+			conjugaison = this._jdbc.queryForObject(sql, mapper, temps.name(), mode.name(), personne.ordinal());
+		} catch(org.springframework.dao.EmptyResultDataAccessException e) {e.getMessage();}
+		return conjugaison;
+
 	}
 
 	@Override

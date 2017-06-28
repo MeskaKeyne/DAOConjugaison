@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 
 import be.steformation.tunsajan.jd.conj.beans.BeansVerbe;
+import be.steformation.tunsajan.jd.conj.utils.ConjExtractor;
 import be.steformations.java_data.conjugaison_fr.interfaces.Auxiliaire;
 import be.steformations.java_data.conjugaison_fr.interfaces.Verbe;
 
@@ -20,31 +21,19 @@ public class MapperVerbe implements RowMapper<Verbe> {
 		String participe = rs.getString("participe");
 		
 		
-		String term = this.terminaison(modeleInf, radical);
-		String vbRadical = this.radical(term, vi);
-		String vParticipe = this.participe(radical, participe);
-		Auxiliaire auxi = Auxiliaire.AVOIR;
+		ConjExtractor extract = new ConjExtractor(); 
+		String term = extract.extractTermInf(modeleInf, radical);
+		String vbRadical = extract.extractRadical(term, vi);
+		String vParticipe = extract.extractTermParticipe(radical, participe);
+		Auxiliaire auxi = null;
+		
+		if(aux == "A") auxi=Auxiliaire.AVOIR;
+		else auxi = Auxiliaire.ETRE;
 		
 		
 		Verbe modele =  new BeansVerbe(modeleInf, radical, participe, auxi, null);
 		Verbe bv = new BeansVerbe(vi, vbRadical, vbRadical.concat(vParticipe), auxi, modele);
-		System.out.println(bv);
-		
-		
-		/////////////////////////////////////////////////////
-		
-		
-		
 		return bv ;
-	}
-	public String terminaison(String infinitif, String radical ){
-		return infinitif.substring(radical.length());
-	}
-	public String radical(String term, String vi){
-		return vi.substring(0, vi.length()-term.length());
-	}
-	public String participe(String radical, String participe){
-		return participe.substring(radical.length());	
 	}
 
 }

@@ -28,7 +28,10 @@ public class MapperConjugaison implements RowMapper<Conjugaison> {
 		Temps t=Temps.valueOf(rs.getString("temps"));
 		Mode m =Mode.valueOf(rs.getString("mode"));
 		String term = rs.getString("term");
-		String vc =this._verbe.getRadical().concat(term);
+		
+		String vc = null;
+		if (this._verbe.getRadical()!=null) vc =this._verbe.getRadical().concat(term);
+		else vc = term;
 		
 		Conjugaison conj = new BeansConjugaison(m, t, p, vc, this._verbe);
 		System.out.println(conj);

@@ -12,13 +12,12 @@ public class BeansVerbe implements Verbe {
 	private Auxiliaire _auxilaire;
 	private Verbe _modele;
 	
-	public BeansVerbe(int id,String infinitf, String radical, String participe, Auxiliaire aux, Verbe modele){
+	public BeansVerbe(String infinitf, String radical, String participe, Auxiliaire aux, Verbe modele){
 		this._infinitif = infinitf;
 		this._radical = radical;
 		this._participe = participe;
 		this._auxilaire = aux;
 		this._modele = modele;
-		this._id = id;
 	}
 
 	@Override

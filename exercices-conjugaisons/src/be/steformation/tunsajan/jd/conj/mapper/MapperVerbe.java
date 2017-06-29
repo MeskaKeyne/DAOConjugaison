@@ -17,26 +17,28 @@ public class MapperVerbe implements RowMapper<Verbe> {
 		String vi = rs.getString("vi"); // VERBE INF
 		String aux = rs.getString("aux");
 		String modeleInf = rs.getString("mi"); 
-		String radical = rs.getString("radical");
 		String participe = rs.getString("participe");
-		int idV = rs.getInt("idVerbe");
-		int idM  = rs.getInt("idModele");
-		
-		
-		ConjExtractor extract = new ConjExtractor(); 
-		String term = extract.extractTermInf(modeleInf, radical);
-		String vbRadical = extract.extractRadical(term, vi);
-		String vParticipe = extract.extractTermParticipe(radical, participe);
+		String radical = rs.getString("radical");
 		Auxiliaire auxi = null;
-		
 		if(aux == "A") auxi=Auxiliaire.AVOIR;
 		else auxi = Auxiliaire.ETRE;
+		if(!rs.wasNull()){
+			ConjExtractor extract = new ConjExtractor(); 
+			String term = extract.extractTermInf(modeleInf, radical);
+			String vbRadical = extract.extractRadical(term, vi);
+			String vParticipe = extract.extractTermParticipe(radical, participe);
+			Verbe modele =  new BeansVerbe(modeleInf, radical, participe, auxi, null);
+			Verbe bv = new BeansVerbe(vi, vbRadical, vbRadical.concat(vParticipe), auxi, modele);
+			return bv ;
+		}
+		else {
+			Verbe modele=new BeansVerbe(modeleInf, null, participe, auxi, null);
+			Verbe bv = new BeansVerbe(vi, null, participe, auxi, modele);
+			return bv ;
+		}
+	
 		
 		
-		Verbe modele =  new BeansVerbe(idM, modeleInf, radical, participe, auxi, null);
-		Verbe bv = new BeansVerbe(idV, vi, vbRadical, vbRadical.concat(vParticipe), auxi, modele);
-		System.out.println(bv);
-		return bv ;
 	}
 
 }

@@ -45,14 +45,14 @@ public class DAOConjugueur implements Conjugueur {
 	public Conjugaison conjuguer(Verbe verbe, Mode mode, Temps temps, Personne personne) {
 		Conjugaison conjugaison = null;
 		String sql = "SELECT m.nom AS mode, t.nom AS temps, c.personne AS personne, c.terminaison AS term "
-				+ "FROM conjugaisons AS c, temps as t, modes AS m "
-				+ "WHERE c.fk_temps = t.id "
-				+ "AND c.fk_mode = m.id  "
-				+ "AND t.nom = (?) AND m.nom = (?) AND c.personne =(?)";
+				+ "FROM conjugaisons AS c, temps as t, modes AS m, verbes AS v, modeles AS ms "
+				+ "WHERE c.fk_temps = t.id and ms.id = v.modele and c.fk_modele = ms.id and t.id = c.fk_temps and m.id = c.fk_mode "
+                +" AND c.personne = (?) and t.nom = (?) and m.nom = (?) AND v.infinitif = (?) and ms.infinitif = (?)";
 		
 		try {
 			MapperConjugaison mapper = new MapperConjugaison(verbe);
-			conjugaison = this._jdbc.queryForObject(sql, mapper, temps.name(), mode.name(), personne.ordinal());
+			conjugaison = this._jdbc.queryForObject(sql, mapper, personne.ordinal()+1, temps.name(), mode.name(), verbe.getInfinitif(), verbe.getModele().getInfinitif()
+					);
 		} catch(org.springframework.dao.EmptyResultDataAccessException e) {e.getMessage();}
 		return conjugaison;
 
@@ -60,8 +60,18 @@ public class DAOConjugueur implements Conjugueur {
 
 	@Override
 	public List<Conjugaison> conjuguer(Verbe verbe, Mode mode, Temps temps) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Conjugaison> conjugaison = null;
+		String sql = "SELECT m.nom AS mode, t.nom AS temps, c.personne AS personne, c.terminaison AS term "
+				+ "FROM conjugaisons AS c, temps as t, modes AS m, verbes AS v, modeles AS ms "
+				+ "WHERE c.fk_temps = t.id and ms.id = v.modele and c.fk_modele = ms.id and t.id = c.fk_temps and m.id = c.fk_mode "
+                +" and t.nom = (?) and m.nom = (?) AND v.infinitif = (?) and ms.infinitif = (?)";
+		
+		try {
+			MapperConjugaison mapper = new MapperConjugaison(verbe);
+			conjugaison = this._jdbc.query(sql, mapper, temps.name(), mode.name(), verbe.getInfinitif(), verbe.getModele().getInfinitif()
+					);
+		} catch(org.springframework.dao.EmptyResultDataAccessException e) {e.getMessage();}
+		return conjugaison;
 	}
 
 }

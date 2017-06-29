@@ -54,8 +54,8 @@ public class BeansConjugaison implements Conjugaison {
 	}
 	@Override
 	public String toString() {
-		return "BeansConjugaison [_mode=" + _mode + ", _temps=" + _temps + ", _verbe=" + _verbe + ", _personne="
-				+ _personne + ", _valeur=" + _valeur + "]";
+		return "[" + _mode +" "+ _temps +" "+ _verbe 
+				+ _personne + " "+  _valeur + "]";
 	}
 
 }

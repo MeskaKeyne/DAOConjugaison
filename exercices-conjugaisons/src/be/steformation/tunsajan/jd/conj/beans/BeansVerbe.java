@@ -55,8 +55,7 @@ public class BeansVerbe implements Verbe {
 
 	@Override
 	public String toString() {
-		return "BeansVerbe [_id=" + _id + ", _infinitif=" + _infinitif + ", _radical=" + _radical + ", _participe="
-				+ _participe + ", _auxilaire=" + _auxilaire + ", _modele=" + _modele + "]";
+		return _infinitif +" " ;
 	}
 
 

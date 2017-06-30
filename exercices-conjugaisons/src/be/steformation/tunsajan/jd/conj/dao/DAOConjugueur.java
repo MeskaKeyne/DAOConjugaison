@@ -7,6 +7,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import be.steformation.tunsajan.jd.conj.mapper.MapperConjugaison;
 import be.steformation.tunsajan.jd.conj.mapper.MapperVerbe;
+import be.steformations.java_data.conjugaison_fr.interfaces.Auxiliaire;
 import be.steformations.java_data.conjugaison_fr.interfaces.Conjugaison;
 import be.steformations.java_data.conjugaison_fr.interfaces.Conjugueur;
 import be.steformations.java_data.conjugaison_fr.interfaces.Mode;
@@ -66,15 +67,28 @@ public class DAOConjugueur implements Conjugueur {
                 +" and t.nom = (?) and m.nom = (?) AND v.infinitif = (?) and ms.infinitif = (?)";
 		
 		try {
-			MapperConjugaison mapper = new MapperConjugaison(verbe);
-			if(Temps.PASSE_COMPOSE == temps){
-				conjugaison = this._jdbc.query(sql, mapper, Temps.PRESENT.toString(), Mode.INDICATIF.toString(), verbe.getAuxiliaire().name().toLowerCase(), verbe.getModele().getInfinitif());
-				System.out.println(conjugaison);
-				//verbe.getParticipe();
+			
+			String auxConj =null;
+			MapperConjugaison  mapper= null;
+			if(temps.ordinal()+1>4){
+				
+				auxConj = verbe.getAuxiliaire().name().toLowerCase();
+				System.out.println(auxConj);
+				if(verbe.getAuxiliaire() == Auxiliaire.ETRE) auxConj = "être";
+				mapper = new MapperConjugaison(getVerbe(auxConj), verbe.getParticipe(), temps);
 			}
-			else conjugaison = this._jdbc.query(sql, mapper, temps.name(), mode.name(), verbe.getInfinitif(), verbe.getModele().getInfinitif()
-					);
+				
+			if(Temps.PASSE_COMPOSE == temps){
+				conjugaison = this._jdbc.query(sql, mapper, Temps.PRESENT.toString(), mode.name(), auxConj, auxConj);
+			}
+			else {
+				mapper = new MapperConjugaison(verbe);
+				conjugaison = this._jdbc.query(sql, mapper, temps.name(), mode.name(), verbe.getInfinitif(), verbe.getModele().getInfinitif());
+			}
+					
+			System.out.println(conjugaison);
 		} catch(org.springframework.dao.EmptyResultDataAccessException e) {e.getMessage();}
+			//conjugaison.setTemps()
 		return conjugaison;
 	}
 

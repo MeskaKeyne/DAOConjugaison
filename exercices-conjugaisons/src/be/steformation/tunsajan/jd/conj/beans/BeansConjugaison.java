@@ -57,5 +57,8 @@ public class BeansConjugaison implements Conjugaison {
 		return "[" + _mode +" "+ _temps +" "+ _verbe 
 				+ _personne + " "+  _valeur + "]";
 	}
+	public void setTemps(Temps t){
+		this._temps = t;
+	}
 
 }

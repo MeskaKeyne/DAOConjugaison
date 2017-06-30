@@ -20,8 +20,8 @@ public class MapperVerbe implements RowMapper<Verbe> {
 		String participe = rs.getString("participe");
 		String radical = rs.getString("radical");
 		Auxiliaire auxi = null;
-		if(aux == "A") auxi=Auxiliaire.AVOIR;
-		else auxi = Auxiliaire.ETRE;
+		if(aux == "E") auxi=Auxiliaire.ETRE;
+		else auxi = Auxiliaire.AVOIR;
 		if(!rs.wasNull()){
 			ConjExtractor extract = new ConjExtractor(); 
 			String term = extract.extractTermInf(modeleInf, radical);

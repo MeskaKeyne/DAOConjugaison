@@ -51,8 +51,7 @@ public class DAOConjugueur implements Conjugueur {
 		
 		try {
 			MapperConjugaison mapper = new MapperConjugaison(verbe);
-			conjugaison = this._jdbc.queryForObject(sql, mapper, personne.ordinal()+1, temps.name(), mode.name(), verbe.getInfinitif(), verbe.getModele().getInfinitif()
-					);
+			conjugaison = this._jdbc.queryForObject(sql, mapper, personne.ordinal()+1, temps.name(), mode.name(), verbe.getInfinitif(), verbe.getModele().getInfinitif());
 		} catch(org.springframework.dao.EmptyResultDataAccessException e) {e.getMessage();}
 		return conjugaison;
 
@@ -68,7 +67,12 @@ public class DAOConjugueur implements Conjugueur {
 		
 		try {
 			MapperConjugaison mapper = new MapperConjugaison(verbe);
-			conjugaison = this._jdbc.query(sql, mapper, temps.name(), mode.name(), verbe.getInfinitif(), verbe.getModele().getInfinitif()
+			if(Temps.PASSE_COMPOSE == temps){
+				conjugaison = this._jdbc.query(sql, mapper, Temps.PRESENT.toString(), Mode.INDICATIF.toString(), verbe.getAuxiliaire().name().toLowerCase(), verbe.getModele().getInfinitif());
+				System.out.println(conjugaison);
+				//verbe.getParticipe();
+			}
+			else conjugaison = this._jdbc.query(sql, mapper, temps.name(), mode.name(), verbe.getInfinitif(), verbe.getModele().getInfinitif()
 					);
 		} catch(org.springframework.dao.EmptyResultDataAccessException e) {e.getMessage();}
 		return conjugaison;

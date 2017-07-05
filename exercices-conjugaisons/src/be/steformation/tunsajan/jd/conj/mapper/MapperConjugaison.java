@@ -53,7 +53,7 @@ public class MapperConjugaison implements RowMapper<Conjugaison> {
 		if(this._temps != null) t = this._temps;
 		
 		Conjugaison conj = new BeansConjugaison(m, t, p, vc, this._verbe);
-		//System.out.println(conj);
+		System.out.println(conj);
 		return conj;
 	}
 	public void setVerbe(Verbe verbe){

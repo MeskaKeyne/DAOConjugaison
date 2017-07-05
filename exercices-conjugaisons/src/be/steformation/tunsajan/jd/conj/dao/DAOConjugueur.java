@@ -70,7 +70,7 @@ public class DAOConjugueur implements Conjugueur {
 			
 			String auxConj =null;
 			MapperConjugaison  mapper= null;
-			if(temps.ordinal()+1>4){
+			if(temps.ordinal()+1>4 || mode == Mode.SUBJONCTIF){
 				
 				auxConj = verbe.getAuxiliaire().name().toLowerCase();
 				System.out.println(auxConj);
@@ -81,6 +81,11 @@ public class DAOConjugueur implements Conjugueur {
 			if(Temps.PASSE_COMPOSE == temps){
 				conjugaison = this._jdbc.query(sql, mapper, Temps.PRESENT.toString(), mode.name(), auxConj, auxConj);
 			}
+			else if(Temps.PLUS_QUE_PARFAIT == temps){
+				conjugaison = this._jdbc.query(sql, mapper, Temps.IMPARFAIT.toString(), mode.name(), auxConj, auxConj);
+			}else if(Temps.PASSE == temps && Mode.SUBJONCTIF == mode){
+				conjugaison = this._jdbc.query(sql, mapper, temps.name(), mode.name(), auxConj, auxConj);
+				}
 			else {
 				mapper = new MapperConjugaison(verbe);
 				conjugaison = this._jdbc.query(sql, mapper, temps.name(), mode.name(), verbe.getInfinitif(), verbe.getModele().getInfinitif());
